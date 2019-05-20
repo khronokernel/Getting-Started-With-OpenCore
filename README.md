@@ -3,7 +3,7 @@ A brief guide to using the OpenCore bootloader for hackintoshes
 
 # So what is OpenCore?
 
-OpenCore is a replacement to Clover which tries to fix the issues that plague it, specifically by being more modular and open. OpenCore is not only for Hackintoshes, but can be used for other purposes that require an emulated EFI. And please remember we’re still in very early infancy so there will be issues
+OpenCore is a replacement to Clover which tries to fix the issues that plague it, specifically by being more modular and open. OpenCore is not only for Hackintoshes, but can be used for other purposes that require an emulated EFI. And please remember we’re still in very early infancy so there will be issues. I also won't be going into detail with vault.plist as there's still quite a bit of development being done there
 
 # Current issues with OpenCore
 
@@ -66,7 +66,7 @@ We can delete #WARNING -1 and  #WARNING -2 just to clean it up a bit
 
 **Add:** You'll want to go through and disable all of them or rename them to the files you have under EFI/OC/ACPI/Custom (set enabled to no or delete)
 
-**Block**: Here we'll drop DMAR and MATS
+**Block**: We won't be doing anything here
 
 **Patch**: Here I'll be adding some USB and SATA patches, follow the vanilla guide for what patches your system may need
 
@@ -107,7 +107,7 @@ PciRoot(0x0)/Pci(0x1b,0x0) -> Layout-id
 * AppleXcpmCfgLock: NO (only needed when CFG-Lock can't be disabled in BIOS)
 * ExternalDiskIcons: YES (External Icons Patch, for when internal drives are treated as external drives)
 * ThirdPartyTrim: NO (enables TRIM, not needed for AHCI or NVMe SSDs)
-* XhciPortLimit: YES (This is actually the 15 port limit patch, don't rely on it as it's not a guaranteed solution to USB. Please create a [USB map](https://usb-map.gitbook.io/project/) when possible)
+* XhciPortLimit: YES (This is actually the 15 port limit patch, don't rely on it as it's not a guaranteed solution to USB. Please create a [USB map](https://usb-map.gitbook.io/project/) when possible but perfect for those who don't have a USBmap yet)
 
 # Misc
 
@@ -115,7 +115,10 @@ PciRoot(0x0)/Pci(0x1b,0x0) -> Layout-id
 
 **Debug**: debug, pretty self-explanatory(leave as-is unless you know what you're doing)
 
-**Security**: security, pretty self-explanatory(leave as-is unless you know what you're doing)
+**Security**: security, pretty self-explanatory
+
+* RequireSignature: NO (we won't be dealing vault.plist so we can ignore)
+* RequireVault: NO (we won't be dealing vault.plist so we can ignore as well)
 
 # NVRAM
 
@@ -155,6 +158,8 @@ PciRoot(0x0)/Pci(0x1b,0x0) -> Layout-id
 
 **Drivers**: add your .efi drivers here
 
+* ApfsDriverLoader.efi (for example)
+
 **Protocols**:
 
 * AppleBootPolicy: NO
@@ -172,6 +177,5 @@ PciRoot(0x0)/Pci(0x1b,0x0) -> Layout-id
 * RequestBootVarRouting: NO
 * SanitiseClearScreen: NO
 
-&#x200B;
 
 # And now you're ready to boot!
