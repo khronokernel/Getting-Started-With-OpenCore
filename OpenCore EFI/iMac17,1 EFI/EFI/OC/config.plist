@@ -438,10 +438,12 @@
 			<key>7C436110-AB2A-4BBB-A880-FE41995C9F82</key>
 			<dict>
 				<key>boot-args</key>
-				<string>-v dart=0 debug=0x100 keepsyms=1 -shikioff</string>
+				<string>-v dart=0 debug=0x100 keepsyms=1 shikigva=40</string>
 				<key>csr-active-config</key>
 				<data>AAAAAA==</data>
 				<key>prev-lang:kbd</key>
+				<data></data>
+				<key>nvda_drv</key>
 				<data></data>
 			</dict>
 		</dict>
