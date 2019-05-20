@@ -30,17 +30,27 @@ So what you need for this:
 
 So it's actually quite simple to make the USB all you need to do is format it as MacOS Journaled with GUID partition map. There is no real size requirement for the USB as OpenCore's entire EFI is less than 5MB
 
+https://i.imgur.com/5uTJbgI.png
+
 Next we'll want to mount the EFI partition on the USB with mountEFI or Clover Configurator
 
+https://i.imgur.com/4l1oK8i.png
+
 And you'll notice that once we open the EFI partition, it's empty. This is where the fun begins
+
+https://i.imgur.com/EDeZB3u.png
 
 # Base folder structure
 
 So lets setup OpenCore’s folder structure, you’ll want to grab those files from OpenCorePkg and construct your EFI to look like the one below:
 
+https://i.imgur.com/VTd0OYI.png
+
 Now you can place your necessary .efi drivers from AppleSupportPkg and AptioFixPkg into drivers and kexts/ACPI into their respective folders. Please note that UEFI drivers are not supported with OpenCore
 
-Here's what mine looks like:
+Here's what mine looks like(ignore my odd choice of kexts):
+
+https://i.imgur.com/ybRtoTi.png
 
 # Setting up your config.plist
 
