@@ -6,7 +6,7 @@ A brief guide to using the OpenCore bootloader for hackintoshes
 OpenCore is a replacement to Clover which tries to fix the issues that plague it, specifically by being more modular and open. OpenCore is not only for Hackintoshes, but can be used for other purposes that require an emulated EFI. And please remember we’re still in very early infancy so there will be issues
 
 # Current issues with OpenCore
-
+As of May 19, 2019
 * Z97 based systems require pure UEFI mode for booting(also known as Windows 8/10 mode)
 * Currently minimal support for emulated NVRAM(sorry z390 users, EmuVariableRuntimeDxe may work but won't save on reboot)
 * fakeSMC sensors can't be injected, alternative is [HWSensors3](https://github.com/warexify/HWSensors3)
