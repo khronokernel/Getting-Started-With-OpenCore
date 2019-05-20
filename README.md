@@ -58,7 +58,7 @@ So things to keep in mind with Config.plist in OpenCore, they are different from
 
 First let’s duplicate the sample.plist and rename the duplicate to config.plist. Now lets open it up in Xcode
 
-&#x200B;
+https://i.imgur.com/MklVb2Z.png
 
 So you've probably noticed there's a bunch of groups:
 
@@ -88,6 +88,8 @@ We can delete #WARNING -1 and  #WARNING -2 just to clean it up a bit
 * RebaseRegions: NO (Attempt to heuristically relocate ACPI memory regions)
 * RestLogoStatus: NO 
 
+https://i.imgur.com/IDZZoFc.png
+
 &#x200B;
 
 # DeviceProperties
@@ -103,6 +105,8 @@ PciRoot(0x0)/Pci(0x1b,0x0) -> Layout-id
 * Applies AppleALC audio injection, insert required value from AppleALC documentation [here](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=3&cad=rja&uact=8&ved=2ahUKEwj9t8qklJziAhVPoZ4KHb1sBPIQjBAwAnoECAUQDQ&url=https%3A%2F%2Fgithub.com%2Facidanthera%2FAppleALC%2Fwiki%2FSupported-codecs&usg=AOvVaw3QqKGaYwfJ7OkT3YIOmoPz)
 
 **Block**: Removes device properties from map(can delete, irrelevant for most users)
+
+https://i.imgur.com/8gujqhJ.png
 
 # Kernel
 
@@ -120,6 +124,8 @@ PciRoot(0x0)/Pci(0x1b,0x0) -> Layout-id
 * ThirdPartyTrim: NO (enables TRIM, not needed for AHCI or NVMe SSDs)
 * XhciPortLimit: YES (This is actually the 15 port limit patch, don't rely on it as it's not a guaranteed solution to USB. Please create a [USB map](https://usb-map.gitbook.io/project/) when possible but perfect for those who don't have a USBmap yet)
 
+https://i.imgur.com/RvQUgCo.png
+
 # Misc
 
 **Boot**:settings for boot screen(leave as-is unless you know what you're doing)
@@ -133,6 +139,8 @@ PciRoot(0x0)/Pci(0x1b,0x0) -> Layout-id
 * RequireSignature: NO (we won't be dealing vault.plist so we can ignore)
 * RequireVault: NO (we won't be dealing vault.plist so we can ignore as well)
 
+https://i.imgur.com/Y2AbXMY.png
+
 # NVRAM
 
 **Add**: 7C436110-AB2A-4BBB-A880-FE41995C9F82 (System Integrity Protection bitmask)
@@ -143,6 +151,8 @@ PciRoot(0x0)/Pci(0x1b,0x0) -> Layout-id
 * prev-lang:kbd: <> (needed for non-latin keyboards)
 
 **Block**: blocks NVRAM variables, not needed for us. Delete the entires there
+
+https://i.imgur.com/F63KIYS.png
 
 # Platforminfo
 
@@ -164,6 +174,8 @@ PciRoot(0x0)/Pci(0x1b,0x0) -> Layout-id
 **UpdateSMBIOS**: YES (Update SMBIOS fields)
 
 **UpdateSMBIOSMode**: Create (Replace the tables with newly allocated EfiReservedMemoryType)
+
+https://i.imgur.com/dIKAlhj.png
 
 # UEFI
 
@@ -190,6 +202,8 @@ PciRoot(0x0)/Pci(0x1b,0x0) -> Layout-id
 * RequestBootVarRouting: NO
 * SanitiseClearScreen: NO
 
-&#x200B;
+https://i.imgur.com/acZ1PUA.png
 
 # And now you're ready to boot!
+
+https://i.imgur.com/pJlP6C3.png
