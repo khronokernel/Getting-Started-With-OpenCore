@@ -206,4 +206,4 @@ https://i.imgur.com/acZ1PUA.png
 
 # And now you're ready to boot!
 
-https://i.imgur.com/pJlP6C3.png
+![Finished EFI](https://i.imgur.com/pJlP6C3.png)
