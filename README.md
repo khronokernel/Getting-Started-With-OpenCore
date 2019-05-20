@@ -86,6 +86,7 @@ We can delete #WARNING -1 and  #WARNING -2 just to clean it up a bit
 * IgnoreForWindows: NO (Disable ACPI modifications when booting Windows, only for those who made broken ACPI tables)
 * NormalizeHeaders: NO (Cleanup ACPI header fields, irrelevant in 10.14)
 * RebaseRegions: NO (Attempt to heuristically relocate ACPI memory regions)
+* RestLogoStatus: NO 
 
 &#x200B;
 
@@ -101,7 +102,7 @@ PciRoot(0x0)/Pci(0x1b,0x0) -> Layout-id
 
 * Applies AppleALC audio injection, insert required value from AppleALC documentation [here](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=3&cad=rja&uact=8&ved=2ahUKEwj9t8qklJziAhVPoZ4KHb1sBPIQjBAwAnoECAUQDQ&url=https%3A%2F%2Fgithub.com%2Facidanthera%2FAppleALC%2Fwiki%2FSupported-codecs&usg=AOvVaw3QqKGaYwfJ7OkT3YIOmoPz)
 
-**Block**: Removes device properties from map(can delete, irrelevant for most users
+**Block**: Removes device properties from map(can delete, irrelevant for most users)
 
 # Kernel
 
@@ -109,7 +110,7 @@ PciRoot(0x0)/Pci(0x1b,0x0) -> Layout-id
 
 **Block**: Blocks kexts from loading, sometime needed for disabling Apple's trackpad driver for some laptops
 
-**Patch**: Patches kexts
+**Patch**: Patches kexts (this is where you add USB port limit patches and AMD CPU patches)
 
 **Quirks**:
 
@@ -122,8 +123,10 @@ PciRoot(0x0)/Pci(0x1b,0x0) -> Layout-id
 # Misc
 
 **Boot**:settings for boot screen(leave as-is unless you know what you're doing)
+* Timeout: 5 (this sets how long it'll wait till it automatically boots from the picker)
 
 **Debug**: debug, pretty self-explanatory(leave as-is unless you know what you're doing)
+* DisableWatchDog: NO (may need to be set for yes if MacOS is stalling on something while booting)
 
 **Security**: security, pretty self-explanatory
 
@@ -187,5 +190,6 @@ PciRoot(0x0)/Pci(0x1b,0x0) -> Layout-id
 * RequestBootVarRouting: NO
 * SanitiseClearScreen: NO
 
+&#x200B;
 
 # And now you're ready to boot!
