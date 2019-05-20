@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>#WARNING </key>
+	<string>Don&apos;t foret to add data for your SMBIOS under PlatformInfo/Generic</string>
 	<key>ACPI</key>
 	<dict>
 		<key>Add</key>
