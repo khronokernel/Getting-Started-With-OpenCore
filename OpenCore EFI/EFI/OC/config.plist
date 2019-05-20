@@ -412,8 +412,6 @@
 				<string>-v dart=0 debug=0x100 keepsyms=1 -shikioff</string>
 				<key>csr-active-config</key>
 				<data>AAAAAA==</data>
-				<key>nvda_drv</key>
-				<data></data>
 				<key>prev-lang:kbd</key>
 				<data></data>
 			</dict>
