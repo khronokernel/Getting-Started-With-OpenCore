@@ -1,4 +1,4 @@
-# Getting-Started-With-OpenCore
+# Getting Started With OpenCore
 A brief guide to using the OpenCore bootloader for hackintoshes
 
 # So what is OpenCore?
