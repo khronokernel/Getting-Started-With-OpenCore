@@ -1,4 +1,4 @@
-# Getting-Started-With-OpenCore
+# Getting Started With OpenCore
 A brief guide to using the OpenCore bootloader for hackintoshes
 
 # So what is OpenCore?
@@ -30,17 +30,27 @@ So what you need for this:
 
 So it's actually quite simple to make the USB all you need to do is format it as MacOS Journaled with GUID partition map. There is no real size requirement for the USB as OpenCore's entire EFI is less than 5MB
 
+![Formatting the USB](https://i.imgur.com/5uTJbgI.png)
+
 Next we'll want to mount the EFI partition on the USB with mountEFI or Clover Configurator
 
+![mountEFI](https://i.imgur.com/4l1oK8i.png)
+
 And you'll notice that once we open the EFI partition, it's empty. This is where the fun begins
+
+![Empty EFI partition](https://i.imgur.com/EDeZB3u.png)
 
 # Base folder structure
 
 So lets setup OpenCore’s folder structure, you’ll want to grab those files from OpenCorePkg and construct your EFI to look like the one below:
 
+![base EFI folder](https://i.imgur.com/VTd0OYI.png)
+
 Now you can place your necessary .efi drivers from AppleSupportPkg and AptioFixPkg into drivers and kexts/ACPI into their respective folders. Please note that UEFI drivers are not supported with OpenCore
 
-Here's what mine looks like:
+Here's what mine looks like(ignore my odd choice of kexts):
+
+![Populated EFI folder](https://i.imgur.com/ybRtoTi.png)
 
 # Setting up your config.plist
 
@@ -48,7 +58,7 @@ So things to keep in mind with Config.plist in OpenCore, they are different from
 
 First let’s duplicate the sample.plist and rename the duplicate to config.plist. Now lets open it up in Xcode
 
-&#x200B;
+![Base Config.plist](https://i.imgur.com/MklVb2Z.png)
 
 So you've probably noticed there's a bunch of groups:
 
@@ -76,6 +86,9 @@ We can delete #WARNING -1 and  #WARNING -2 just to clean it up a bit
 * IgnoreForWindows: NO (Disable ACPI modifications when booting Windows, only for those who made broken ACPI tables)
 * NormalizeHeaders: NO (Cleanup ACPI header fields, irrelevant in 10.14)
 * RebaseRegions: NO (Attempt to heuristically relocate ACPI memory regions)
+* RestLogoStatus: NO 
+
+![ACPI](https://i.imgur.com/IDZZoFc.png)
 
 &#x200B;
 
@@ -91,7 +104,9 @@ PciRoot(0x0)/Pci(0x1b,0x0) -> Layout-id
 
 * Applies AppleALC audio injection, insert required value from AppleALC documentation [here](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=3&cad=rja&uact=8&ved=2ahUKEwj9t8qklJziAhVPoZ4KHb1sBPIQjBAwAnoECAUQDQ&url=https%3A%2F%2Fgithub.com%2Facidanthera%2FAppleALC%2Fwiki%2FSupported-codecs&usg=AOvVaw3QqKGaYwfJ7OkT3YIOmoPz)
 
-**Block**: Removes device properties from map(can delete, irrelevant for most users
+**Block**: Removes device properties from map(can delete, irrelevant for most users)
+
+![DeviceProperties](https://i.imgur.com/8gujqhJ.png)
 
 # Kernel
 
@@ -99,7 +114,7 @@ PciRoot(0x0)/Pci(0x1b,0x0) -> Layout-id
 
 **Block**: Blocks kexts from loading, sometime needed for disabling Apple's trackpad driver for some laptops
 
-**Patch**: Patches kexts
+**Patch**: Patches kexts (this is where you add USB port limit patches and AMD CPU patches)
 
 **Quirks**:
 
@@ -109,16 +124,22 @@ PciRoot(0x0)/Pci(0x1b,0x0) -> Layout-id
 * ThirdPartyTrim: NO (enables TRIM, not needed for AHCI or NVMe SSDs)
 * XhciPortLimit: YES (This is actually the 15 port limit patch, don't rely on it as it's not a guaranteed solution to USB. Please create a [USB map](https://usb-map.gitbook.io/project/) when possible but perfect for those who don't have a USBmap yet)
 
+![Kernel](https://i.imgur.com/RvQUgCo.png)
+
 # Misc
 
 **Boot**:settings for boot screen(leave as-is unless you know what you're doing)
+* Timeout: 5 (this sets how long it'll wait till it automatically boots from the picker)
 
 **Debug**: debug, pretty self-explanatory(leave as-is unless you know what you're doing)
+* DisableWatchDog: NO (may need to be set for yes if MacOS is stalling on something while booting)
 
 **Security**: security, pretty self-explanatory
 
 * RequireSignature: NO (we won't be dealing vault.plist so we can ignore)
 * RequireVault: NO (we won't be dealing vault.plist so we can ignore as well)
+
+![Misc](https://i.imgur.com/Y2AbXMY.png)
 
 # NVRAM
 
@@ -130,6 +151,8 @@ PciRoot(0x0)/Pci(0x1b,0x0) -> Layout-id
 * prev-lang:kbd: <> (needed for non-latin keyboards)
 
 **Block**: blocks NVRAM variables, not needed for us. Delete the entires there
+
+![NVRAM](https://i.imgur.com/F63KIYS.png)
 
 # Platforminfo
 
@@ -152,13 +175,13 @@ PciRoot(0x0)/Pci(0x1b,0x0) -> Layout-id
 
 **UpdateSMBIOSMode**: Create (Replace the tables with newly allocated EfiReservedMemoryType)
 
+![PlatformInfo](https://i.imgur.com/dIKAlhj.png)
+
 # UEFI
 
 **ConnectDrivers**: YES (forces .efi drivers)
 
 **Drivers**: add your .efi drivers here
-
-* ApfsDriverLoader.efi (for example)
 
 **Protocols**:
 
@@ -177,5 +200,8 @@ PciRoot(0x0)/Pci(0x1b,0x0) -> Layout-id
 * RequestBootVarRouting: NO
 * SanitiseClearScreen: NO
 
+![UEFI](https://i.imgur.com/acZ1PUA.png)
 
 # And now you're ready to boot!
+
+![Finished EFI](https://i.imgur.com/pJlP6C3.png)
