@@ -30,27 +30,27 @@ So what you need for this:
 
 So it's actually quite simple to make the USB all you need to do is format it as MacOS Journaled with GUID partition map. There is no real size requirement for the USB as OpenCore's entire EFI is less than 5MB
 
-https://i.imgur.com/5uTJbgI.png
+![Formatting the USB](https://i.imgur.com/5uTJbgI.png)
 
 Next we'll want to mount the EFI partition on the USB with mountEFI or Clover Configurator
 
-https://i.imgur.com/4l1oK8i.png
+![mountEFI](https://i.imgur.com/4l1oK8i.png)
 
 And you'll notice that once we open the EFI partition, it's empty. This is where the fun begins
 
-https://i.imgur.com/EDeZB3u.png
+![Empty EFI partition](https://i.imgur.com/EDeZB3u.png)
 
 # Base folder structure
 
 So lets setup OpenCore’s folder structure, you’ll want to grab those files from OpenCorePkg and construct your EFI to look like the one below:
 
-https://i.imgur.com/VTd0OYI.png
+![base EFI folder](https://i.imgur.com/VTd0OYI.png)
 
 Now you can place your necessary .efi drivers from AppleSupportPkg and AptioFixPkg into drivers and kexts/ACPI into their respective folders. Please note that UEFI drivers are not supported with OpenCore
 
 Here's what mine looks like(ignore my odd choice of kexts):
 
-https://i.imgur.com/ybRtoTi.png
+![Populated EFI folder](https://i.imgur.com/ybRtoTi.png)
 
 # Setting up your config.plist
 
@@ -58,7 +58,7 @@ So things to keep in mind with Config.plist in OpenCore, they are different from
 
 First let’s duplicate the sample.plist and rename the duplicate to config.plist. Now lets open it up in Xcode
 
-https://i.imgur.com/MklVb2Z.png
+![Base Config.plist](https://i.imgur.com/MklVb2Z.png)
 
 So you've probably noticed there's a bunch of groups:
 
@@ -88,7 +88,7 @@ We can delete #WARNING -1 and  #WARNING -2 just to clean it up a bit
 * RebaseRegions: NO (Attempt to heuristically relocate ACPI memory regions)
 * RestLogoStatus: NO 
 
-https://i.imgur.com/IDZZoFc.png
+![ACPI](https://i.imgur.com/IDZZoFc.png)
 
 &#x200B;
 
@@ -106,7 +106,7 @@ PciRoot(0x0)/Pci(0x1b,0x0) -> Layout-id
 
 **Block**: Removes device properties from map(can delete, irrelevant for most users)
 
-https://i.imgur.com/8gujqhJ.png
+![DeviceProperties](https://i.imgur.com/8gujqhJ.png)
 
 # Kernel
 
@@ -124,7 +124,7 @@ https://i.imgur.com/8gujqhJ.png
 * ThirdPartyTrim: NO (enables TRIM, not needed for AHCI or NVMe SSDs)
 * XhciPortLimit: YES (This is actually the 15 port limit patch, don't rely on it as it's not a guaranteed solution to USB. Please create a [USB map](https://usb-map.gitbook.io/project/) when possible but perfect for those who don't have a USBmap yet)
 
-https://i.imgur.com/RvQUgCo.png
+![Kernel](https://i.imgur.com/RvQUgCo.png)
 
 # Misc
 
@@ -139,7 +139,7 @@ https://i.imgur.com/RvQUgCo.png
 * RequireSignature: NO (we won't be dealing vault.plist so we can ignore)
 * RequireVault: NO (we won't be dealing vault.plist so we can ignore as well)
 
-https://i.imgur.com/Y2AbXMY.png
+![Misc](https://i.imgur.com/Y2AbXMY.png)
 
 # NVRAM
 
@@ -152,7 +152,7 @@ https://i.imgur.com/Y2AbXMY.png
 
 **Block**: blocks NVRAM variables, not needed for us. Delete the entires there
 
-https://i.imgur.com/F63KIYS.png
+![NVRAM](https://i.imgur.com/F63KIYS.png)
 
 # Platforminfo
 
@@ -175,15 +175,13 @@ https://i.imgur.com/F63KIYS.png
 
 **UpdateSMBIOSMode**: Create (Replace the tables with newly allocated EfiReservedMemoryType)
 
-https://i.imgur.com/dIKAlhj.png
+![PlatformInfo](https://i.imgur.com/dIKAlhj.png)
 
 # UEFI
 
 **ConnectDrivers**: YES (forces .efi drivers)
 
 **Drivers**: add your .efi drivers here
-
-* ApfsDriverLoader.efi (for example)
 
 **Protocols**:
 
@@ -202,7 +200,7 @@ https://i.imgur.com/dIKAlhj.png
 * RequestBootVarRouting: NO
 * SanitiseClearScreen: NO
 
-https://i.imgur.com/acZ1PUA.png
+![UEFI](https://i.imgur.com/acZ1PUA.png)
 
 # And now you're ready to boot!
 
