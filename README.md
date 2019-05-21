@@ -3,7 +3,7 @@ A brief guide to using the OpenCore bootloader for hackintoshes
 
 # So what is OpenCore?
 
-OpenCore is a replacement for Clover. By design, OpenCore is versatile by being more modular and open as it aims to resolve the constraints and issues that Clover brings. It is not only for Hackintoshes as it can be used for other purposes that require an emulated EFI. Please remember we’re still in very early infancy so there will be issues. This specifc guide will be omiting Vault.plist and Vault.sig as there's still quite a bit of development happening there. OpenCore should be considered in Aplha stage at this time. If you have a working, stable system you should not migrate unless you prefer "bleeding edge" development, want to contribute, and don't mind recovering your system should it fail to boot.
+OpenCore is a replacement for Clover. By design, OpenCore is versatile by being more modular and open as it aims to resolve the constraints and issues that Clover brings. It is not only for Hackintoshes as it can be used for other purposes that require an emulated EFI. Please remember we’re still in very early infancy so there will be issues. This specifc guide will be omiting Vault.plist and Vault.sig as there's still quite a bit of development happening there. OpenCore should be considered in Alpha stage at this time. If you have a working, stable system you should not migrate unless you prefer "bleeding edge" development, want to contribute, and don't mind recovering your system should it fail to boot.
 
 # Current issues with OpenCore
 
@@ -32,7 +32,7 @@ Creating the USB is simple. All you need to do is format it as MacOS Journaled w
 
 ![Formatting the USB](https://i.imgur.com/5uTJbgI.png)
 
-Next we'll want to mount the EFI partition on the USB with mountEFI or Clover Configurator.
+Next we'll want to mount the EFI partition on the USB with either mountEFI or Clover Configurator.
 
 ![mountEFI](https://i.imgur.com/4l1oK8i.png)
 
@@ -65,7 +65,7 @@ At this point you've noticed there are a bunch of groups:
 * ACPI: This is for loading, blocking and patching the ACPI.
 * DeviceProperties: This is where you'd set PCI device patches like the Intel Framebuffer patch.
 * Kernel: Where we tell OpenCore what kexts to load, what order to load and which to block.
-* Misc: Setting for OpenCore's boot loader itself.
+* Misc: Settings for OpenCore's boot loader itself.
 * NVRAM: This is where we set NVRAM properties like boot flags and SIP.
 * Platforminfo: This is where we setup your SMBIOS.
 * UEFI: Where we tell OpenCore which drivers to load and in which order.
@@ -78,11 +78,11 @@ We can delete *#WARNING -1* and  *#WARNING -2* just to clean it up a bit.
 
 **Block**: We won't be doing anything here.
 
-**Patch**: Here you'll be adding some USB and SATA patches, follow the vanilla guide for what patches your system may need.
+**Patch**: Here you'll be adding some USB and SATA patches, follow the [Vanilla guide](https://hackintosh.gitbook.io/-r-hackintosh-vanilla-desktop-guide/) for what patches your system may need.
 
 **Quirk**: Settings for ACPI.
 
-* FadtEnableReset: NO (enable reboot and shutdown on legacy hardware, not recommended unless needed)
+* FadtEnableReset: NO (Enable reboot and shutdown on legacy hardware, not recommended unless needed)
 * IgnoreForWindows: NO (Disable ACPI modifications when booting Windows, only for those who made broken ACPI tables)
 * NormalizeHeaders: NO (Cleanup ACPI header fields, irrelevant in 10.14)
 * RebaseRegions: NO (Attempt to heuristically relocate ACPI memory regions)
@@ -110,11 +110,11 @@ We can delete *#WARNING -1* and  *#WARNING -2* just to clean it up a bit.
 
 # Kernel
 
-**Add**: Here's where you specify which kexts to load, order matters here so make sure Lilu.kext is always first! Other higher priority kexts come after as Lilu such as, VirtualSMC, AppleALC, WhateverGreen, etc.
+**Add**: Here's where you specify which kexts to load, order matters here so make sure Lilu.kext is always first! Other higher priority kexts come after Lilu such as, VirtualSMC, AppleALC, WhateverGreen, etc.
 
 **Block**: Blocks kexts from loading. Sometimes needed for disabling Apple's trackpad driver for some laptops.
 
-**Patch**: Patches kexts (this is where you add USB port limit patches and AMD CPU patches).
+**Patch**: Patches kexts (this is where you would add USB port limit patches and AMD CPU patches).
 
 **Quirks**:
 
