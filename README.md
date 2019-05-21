@@ -3,7 +3,7 @@ A brief guide to using the OpenCore bootloader for hackintoshes
 
 # So what is OpenCore?
 
-OpenCore is a replacement to Clover which tries to fix the issues that plague it, specifically by being more modular and open. OpenCore is not only for Hackintoshes, but can be used for other purposes that require an emulated EFI. And please remember we’re still in very early infancy so there will be issues. I also won't be going into detail with vault.plist as there's still quite a bit of development being done there
+OpenCore is a replacement to Clover which tries to fix the issues that plague it, specifically by being more modular and open. OpenCore is not only for Hackintoshes, but can be used for other purposes that require an emulated EFI. And please remember we’re still in very early infancy so there will be issues. This specifc guide will be omiting Vault.plist and Vault.sig as there's still quite a bit of development happening there
 
 # Current issues with OpenCore
 
@@ -17,7 +17,7 @@ OpenCore is a replacement to Clover which tries to fix the issues that plague it
 
 So what you need for this:
 
-* [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases) (recommend to build from scratch instead of using the prebuilt package as OpenCore is constantly being updated)
+* [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases) (recommend to build from scratch instead of using the prebuilt package as OpenCore is constantly being updated. As of writing we're on Version 0.0.3 even though the current offical release is 0.0.1)
 * [AppleSupportPkg](https://github.com/acidanthera/AppleSupportPkg/releases)
 * [AptioFixPkg](https://github.com/acidanthera/AptioFixPkg/releases)
 * [mountEFI](https://github.com/corpnewt/MountEFI) or some form of EFI mounting. Clover Configurator works just as well
@@ -68,7 +68,7 @@ So you've probably noticed there's a bunch of groups:
 * Misc: Setting for OpenCore's boot loader itself
 * NVRAM: This is where we set NVRAM properties like boot flags and SIP
 * Platforminfo: This is where we setup your SMBIOS
-* UEFI: Where we tell OpenCore which drivers to load and which order
+* UEFI: Where we tell OpenCore which drivers to load and in which order
 
 We can delete #WARNING -1 and  #WARNING -2 just to clean it up a bit
 
@@ -86,7 +86,7 @@ We can delete #WARNING -1 and  #WARNING -2 just to clean it up a bit
 * IgnoreForWindows: NO (Disable ACPI modifications when booting Windows, only for those who made broken ACPI tables)
 * NormalizeHeaders: NO (Cleanup ACPI header fields, irrelevant in 10.14)
 * RebaseRegions: NO (Attempt to heuristically relocate ACPI memory regions)
-* RestLogoStatus: NO 
+* ResetLogoStatus: NO (Workaround for systems running BGRT tables)
 
 ![ACPI](https://i.imgur.com/IDZZoFc.png)
 
@@ -112,7 +112,7 @@ PciRoot(0x0)/Pci(0x1b,0x0) -> Layout-id
 
 **Add**: Here's where you specify which kexts to load, order matters here so make sure Lilu.kext is always first and other higher priority kexts come after as Lilu provides functionality to VirtualSMC, AppleALC, WhateverGreen and others
 
-**Block**: Blocks kexts from loading, sometime needed for disabling Apple's trackpad driver for some laptops
+**Block**: Blocks kexts from loading, sometimes needed for disabling Apple's trackpad driver for some laptops
 
 **Patch**: Patches kexts (this is where you add USB port limit patches and AMD CPU patches)
 
@@ -124,7 +124,7 @@ PciRoot(0x0)/Pci(0x1b,0x0) -> Layout-id
 * ThirdPartyTrim: NO (enables TRIM, not needed for AHCI or NVMe SSDs)
 * XhciPortLimit: YES (This is actually the 15 port limit patch, don't rely on it as it's not a guaranteed solution to USB. Please create a [USB map](https://usb-map.gitbook.io/project/) when possible but perfect for those who don't have a USBmap yet)
 
-![Kernel](https://i.imgur.com/RvQUgCo.png)
+![Kernel](https://i.imgur.com/TbkQvwb.png)
 
 # Misc
 
@@ -179,29 +179,34 @@ PciRoot(0x0)/Pci(0x1b,0x0) -> Layout-id
 
 # UEFI
 
-**ConnectDrivers**: YES (forces .efi drivers)
+**ConnectDrivers**: YES (forces .efi drivers, change to NO for faster boot times)
 
 **Drivers**: add your .efi drivers here
 
 **Protocols**:
 
-* AppleBootPolicy: NO
-* ConsoleControl: NO
-* DataHub: NO
-* DeviceProperties: NO
+* AppleBootPolicy: NO (ensures APFS compatibility on VMs or legacy Macs)
+* ConsoleControl: NO (Replaces Console Control protocol with a builtin version, needed for when firmware doens't support text output mode)
+* DataHub: NO (Reinstalls Data Hub)
+* DeviceProperties: NO (ensures full compatibility on VMs or legacy Macs)
 
 **Quirks**:
 
 * ExitBootServicesDelay: 0 (switch to 5 if running ASUS Z87-Pro with FileVault2)
-* IgnoreInvalidFlexRatio: NO
-* IgnoreTextInGraphics: NO
-* ProvideConsoleGop: NO
-* ReleaseUsbOwnership: NO
-* RequestBootVarRouting: NO
-* SanitiseClearScreen: NO
+* IgnoreInvalidFlexRatio: NO (Fix for when MSR_FLEX_RATIO (0x194) can't be disabled in the BIOS)
+* IgnoreTextInGraphics: NO (Fix for UI corruption when both text and graphics outputs happen)
+* ProvideConsoleGop: NO (Enables GOP, AptioMemeoryFix already has this)
+* ReleaseUsbOwnership: NO (releases USB controller from firmware driver)
+* RequestBootVarRouting: NO (redirects AptioMemeoryFix from EFI_GLOBAL_VARIABLE_G to OC_VENDOR_VARIABLE_GUID. Needed for when firmware tries to delete boot entiries)
+* SanitiseClearScreen: NO (fixes High resoltuions displays that display OpenCore in 1024x768)
 
 ![UEFI](https://i.imgur.com/acZ1PUA.png)
 
-# And now you're ready to boot!
+# What your EFI should now look like:
 
 ![Finished EFI](https://i.imgur.com/pJlP6C3.png)
+
+# And now you're ready to boot!
+
+![AboutThisMac](https://i.imgur.com/MFq1qGr.png)
+
