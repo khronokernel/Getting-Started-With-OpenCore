@@ -3,7 +3,7 @@ A brief guide to using the OpenCore bootloader for hackintoshes
 
 # So what is OpenCore?
 
-OpenCore is a replacement to Clover which tries to fix the issues that plague it, specifically by being more modular and open. OpenCore is not only for Hackintoshes, but can be used for other purposes that require an emulated EFI. And please remember we’re still in very early infancy so there will be issues. I also won't be going into detail with vault.plist as there's still quite a bit of development being done there
+OpenCore is a replacement to Clover which tries to fix the issues that plague it, specifically by being more modular and open. OpenCore is not only for Hackintoshes, but can be used for other purposes that require an emulated EFI. And please remember we’re still in very early infancy so there will be issues. This specifc guide will be omiting Vault.plist and Vault.sig as there's still quite a bit of development happening there
 
 # Current issues with OpenCore
 
@@ -17,7 +17,7 @@ OpenCore is a replacement to Clover which tries to fix the issues that plague it
 
 So what you need for this:
 
-* [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases) (recommend to build from scratch instead of using the prebuilt package as OpenCore is constantly being updated)
+* [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases) (recommend to build from scratch instead of using the prebuilt package as OpenCore is constantly being updated. As of writing we're on Version 0.0.3 even though the current offical release is 0.0.1)
 * [AppleSupportPkg](https://github.com/acidanthera/AppleSupportPkg/releases)
 * [AptioFixPkg](https://github.com/acidanthera/AptioFixPkg/releases)
 * [mountEFI](https://github.com/corpnewt/MountEFI) or some form of EFI mounting. Clover Configurator works just as well
