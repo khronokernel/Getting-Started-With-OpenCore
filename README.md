@@ -202,6 +202,11 @@ PciRoot(0x0)/Pci(0x1b,0x0) -> Layout-id
 
 ![UEFI](https://i.imgur.com/acZ1PUA.png)
 
-# And now you're ready to boot!
+# What your EFI should now look like:
 
 ![Finished EFI](https://i.imgur.com/pJlP6C3.png)
+
+# And now you're ready to boot!
+
+![AboutThisMac](https://i.imgur.com/MFq1qGr.png)
+
