@@ -86,7 +86,7 @@ We can delete #WARNING -1 and  #WARNING -2 just to clean it up a bit
 * IgnoreForWindows: NO (Disable ACPI modifications when booting Windows, only for those who made broken ACPI tables)
 * NormalizeHeaders: NO (Cleanup ACPI header fields, irrelevant in 10.14)
 * RebaseRegions: NO (Attempt to heuristically relocate ACPI memory regions)
-* RestLogoStatus: NO 
+* ResetLogoStatus: NO (Workaround for systems running BGRT tables)
 
 ![ACPI](https://i.imgur.com/IDZZoFc.png)
 
@@ -179,26 +179,26 @@ PciRoot(0x0)/Pci(0x1b,0x0) -> Layout-id
 
 # UEFI
 
-**ConnectDrivers**: YES (forces .efi drivers)
+**ConnectDrivers**: YES (forces .efi drivers, change to NO for faster boot times)
 
 **Drivers**: add your .efi drivers here
 
 **Protocols**:
 
-* AppleBootPolicy: NO
-* ConsoleControl: NO
-* DataHub: NO
-* DeviceProperties: NO
+* AppleBootPolicy: NO (ensures APFS compatibility on VMs or legacy Macs)
+* ConsoleControl: NO (Replaces Console Control protocol with a builtin version, needed for when firmware doens't support text output mode)
+* DataHub: NO (Reinstalls Data Hub)
+* DeviceProperties: NO (ensures full compatibility on VMs or legacy Macs)
 
 **Quirks**:
 
 * ExitBootServicesDelay: 0 (switch to 5 if running ASUS Z87-Pro with FileVault2)
-* IgnoreInvalidFlexRatio: NO
-* IgnoreTextInGraphics: NO
-* ProvideConsoleGop: NO
-* ReleaseUsbOwnership: NO
-* RequestBootVarRouting: NO
-* SanitiseClearScreen: NO
+* IgnoreInvalidFlexRatio: NO (Fix for when MSR_FLEX_RATIO (0x194) can't be disabled in the BIOS)
+* IgnoreTextInGraphics: NO (Fix for UI corruption when both text and graphics outputs happen)
+* ProvideConsoleGop: NO (Enables GOP, AptioMemeoryFix already has this)
+* ReleaseUsbOwnership: NO (releases USB controller from firmware driver)
+* RequestBootVarRouting: NO (redirects AptioMemeoryFix from EFI_GLOBAL_VARIABLE_G to OC_VENDOR_VARIABLE_GUID. Needed for when firmware tries to delete boot entiries)
+* SanitiseClearScreen: NO (fixes High resoltuions displays that display OpenCore in 1024x768)
 
 ![UEFI](https://i.imgur.com/acZ1PUA.png)
 
