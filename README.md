@@ -68,7 +68,7 @@ So you've probably noticed there's a bunch of groups:
 * Misc: Setting for OpenCore's boot loader itself
 * NVRAM: This is where we set NVRAM properties like boot flags and SIP
 * Platforminfo: This is where we setup your SMBIOS
-* UEFI: Where we tell OpenCore which drivers to load and which order
+* UEFI: Where we tell OpenCore which drivers to load and in which order
 
 We can delete #WARNING -1 and  #WARNING -2 just to clean it up a bit
 
@@ -112,7 +112,7 @@ PciRoot(0x0)/Pci(0x1b,0x0) -> Layout-id
 
 **Add**: Here's where you specify which kexts to load, order matters here so make sure Lilu.kext is always first and other higher priority kexts come after as Lilu provides functionality to VirtualSMC, AppleALC, WhateverGreen and others
 
-**Block**: Blocks kexts from loading, sometime needed for disabling Apple's trackpad driver for some laptops
+**Block**: Blocks kexts from loading, sometimes needed for disabling Apple's trackpad driver for some laptops
 
 **Patch**: Patches kexts (this is where you add USB port limit patches and AMD CPU patches)
 
