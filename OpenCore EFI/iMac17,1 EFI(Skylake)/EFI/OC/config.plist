@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>#WARNING </key>
-	<string>Don&apos;t foret to add data for your SMBIOS under PlatformInfo/Generic</string>
+	<string>Don&apos;t forget to add data for your SMBIOS under PlatformInfo/Generic</string>
 	<key>ACPI</key>
 	<dict>
 		<key>Add</key>
