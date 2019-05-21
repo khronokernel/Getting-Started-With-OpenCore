@@ -124,7 +124,7 @@ PciRoot(0x0)/Pci(0x1b,0x0) -> Layout-id
 * ThirdPartyTrim: NO (enables TRIM, not needed for AHCI or NVMe SSDs)
 * XhciPortLimit: YES (This is actually the 15 port limit patch, don't rely on it as it's not a guaranteed solution to USB. Please create a [USB map](https://usb-map.gitbook.io/project/) when possible but perfect for those who don't have a USBmap yet)
 
-![Kernel](https://i.imgur.com/RvQUgCo.png)
+![Kernel](https://i.imgur.com/TbkQvwb.png)
 
 # Misc
 
