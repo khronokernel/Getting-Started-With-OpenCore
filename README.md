@@ -209,3 +209,9 @@ We can delete *#WARNING -1* and  *#WARNING -2* just to clean it up a bit.
 # And now you're ready to boot!
 
 ![AboutThisMac](https://i.imgur.com/MFq1qGr.png)
+
+# Credit
+* [Apple](https://www.apple.com) for MacOS
+* [vit9696](https://github.com/vit9696) for OpenCore
+* [InsanelyMac's OpenCore forums](https://www.insanelymac.com/forum/topic/338516-opencore-discussion/) for finding issues with hardware and their work arounds
+* [icedterminal](https://github.com/icedterminal) for heavy grammar correction
