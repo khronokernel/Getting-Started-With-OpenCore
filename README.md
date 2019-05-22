@@ -25,7 +25,7 @@ Requirements:
 * USB formatted as MacOS Journaled with GUID partition map.
 * Knowledge of how a hackintosh works and what files yours requires.
 * A working Hackintosh to test on.
-* You must remove Clover from your system entirely. Keep a backup of your Clover based EFI.
+* You must remove Clover from your system entirely if you wish to use it as your main boot-loader. Keep a backup of your Clover based EFI.
 
 # Creating the USB
 
@@ -211,8 +211,18 @@ We can delete *#WARNING -1* and  *#WARNING -2* just to clean it up a bit.
 
 ![AboutThisMac](https://i.imgur.com/MFq1qGr.png)
 
+# Making Clover your Main Boot-Loader
+
+So now you're ready to completly switch, well what you'll want to do is completely scrub your system of Clover. The main things to keep in mind is:
+* Clover is on your Boot Drive (duh)
+* Clover may be hiding in other spots(Clover Prefeance Pane and other tools that rely on Clover)
+
+Cleaning up is actaully quite simple, for your EFI you'll want to run [mountEFI](https://github.com/corpnewt/MountEFI), move Clover to somewhere safe(preferably a rescue USB) and copy OpenCore's EFI to the main drive's EFI partition. Certain system BIOS may require you to manually remove Clover as an EFI boot option(and extra special system might need a factory reset to permantly remove it)
+
+Regarding apps that rely on Clover, you'll need to look through yourself but main culprit is Clover's Preferance Pane which is used for updating Clover(I think you can see why that's an issue). Generally killing and the deleting said app will work in most cases but you may need to do some heavy system file searching to truly delete it if the preferance pane keep showing up
+
 # Credit
 * [Apple](https://www.apple.com) for MacOS
 * [vit9696](https://github.com/vit9696) for OpenCore
 * [InsanelyMac's OpenCore forums](https://www.insanelymac.com/forum/topic/338516-opencore-discussion/) for finding issues with hardware and their work arounds
-* [icedterminal](https://github.com/icedterminal) for heavy grammar correction
+* [icedterminal](https://github.com/icedterminal) for heavy grammar correction and Clover Removal
