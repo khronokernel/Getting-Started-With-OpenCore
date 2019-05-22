@@ -1,7 +1,7 @@
 # Getting Started With OpenCore
 A brief guide to using the OpenCore bootloader for hackintoshes
 
-# So what is OpenCore?
+# What is OpenCore?
 
 OpenCore is a replacement for Clover. By design, OpenCore is versatile by being more modular and open as it aims to resolve the constraints and issues that Clover brings. It is not only for Hackintoshes as it can be used for other purposes that require an emulated EFI. Please remember we’re still in very early infancy so there will be issues. This specifc guide will be omiting Vault.plist and Vault.sig as there's still quite a bit of development happening there. OpenCore should be considered in Alpha stage at this time. If you have a working, stable system you should not migrate unless you prefer "bleeding edge" development, want to contribute, and don't mind recovering your system should it fail to boot.
 
@@ -25,6 +25,7 @@ Requirements:
 * USB formatted as MacOS Journaled with GUID partition map.
 * Knowledge of how a hackintosh works and what files yours requires.
 * A working Hackintosh to test on.
+* You must remove Clover from your system entirely. Keep a backup of your Clover based EFI.
 
 # Creating the USB
 
