@@ -121,6 +121,7 @@ We can delete *#WARNING -1* and  *#WARNING -2* just to clean it up a bit.
 
 * AppleCpuPmCfgLock: NO (Only needed when CFG-Lock can't be disabled in BIOS)
 * AppleXcpmCfgLock: NO (Only needed when CFG-Lock can't be disabled in BIOS)
+* DisbaleIOMapper: NO (Needed to get around VT-D if unable to disable in BIOS, can interfere with Firmware)
 * ExternalDiskIcons: YES (External Icons Patch, for when internal drives are treated as external drives)
 * ThirdPartyTrim: NO (Enables TRIM, not needed for AHCI or NVMe SSDs)
 * XhciPortLimit: YES (This is actually the 15 port limit patch, don't rely on it as it's not a guaranteed solution to USB. Please create a [USB map](https://usb-map.gitbook.io/project/) when possible. It's intended use is for those that do not have a USB map.)
@@ -133,12 +134,13 @@ We can delete *#WARNING -1* and  *#WARNING -2* just to clean it up a bit.
 * Timeout: 5 (This sets how long OpenCore will wait until it automatically boots from the default selection).
 
 **Debug**: Debug has special use cases, leave as-is unless you know what you're doing.
-* DisableWatchDog: NO (May need to be set for yes if MacOS is stalling on something while booting)
+* DisableWatchDog: NO (May need to be set for yes if macOS is stalling on something while booting)
 
 **Security**: Security is pretty self-explanatory.
 
 * RequireSignature: NO (We won't be dealing vault.plist so we can ignore)
 * RequireVault: NO (We won't be dealing vault.plist so we can ignore as well)
+* ScanPolicy: 0 (This allow you to see all drives availibe)
 
 ![Misc](https://i.imgur.com/Y2AbXMY.png)
 
