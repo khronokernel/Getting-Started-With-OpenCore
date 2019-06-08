@@ -163,13 +163,13 @@
 			</dict>
 			<dict>
 				<key>BundlePath</key>
-				<string>fakeSMC.kext</string>
+				<string>VirtualSMC.kext</string>
 				<key>Comment</key>
 				<string></string>
 				<key>Enabled</key>
 				<true/>
 				<key>ExecutablePath</key>
-				<string>Contents/MacOS/FakeSMC</string>
+				<string>Contents/MacOS/VirtualSMC</string>
 				<key>MatchKernel</key>
 				<string></string>
 				<key>PlistPath</key>
@@ -219,13 +219,13 @@
 			</dict>
 			<dict>
 				<key>BundlePath</key>
-				<string>W836x.kext</string>
+				<string>SMCProcessor.kext</string>
 				<key>Comment</key>
 				<string></string>
 				<key>Enabled</key>
 				<true/>
 				<key>ExecutablePath</key>
-				<string>Contents/MacOS/W836x</string>
+				<string>Contents/MacOS/SMCProcessor</string>
 				<key>MatchKernel</key>
 				<string></string>
 				<key>PlistPath</key>
@@ -233,27 +233,13 @@
 			</dict>
 			<dict>
 				<key>BundlePath</key>
-				<string>IntelCPUMonitor.kext</string>
+				<string>SMCSuperIO.kext</string>
 				<key>Comment</key>
 				<string></string>
 				<key>Enabled</key>
 				<true/>
 				<key>ExecutablePath</key>
-				<string>Contents/MacOS/IntelCPUMonitor</string>
-				<key>MatchKernel</key>
-				<string></string>
-				<key>PlistPath</key>
-				<string>Contents/Info.plist</string>
-			</dict>
-			<dict>
-				<key>BundlePath</key>
-				<string>ACPIMonitor.kext</string>
-				<key>Comment</key>
-				<string></string>
-				<key>Enabled</key>
-				<true/>
-				<key>ExecutablePath</key>
-				<string>Contents/MacOS/ACPIMonitor</string>
+				<string>Contents/MacOS/SMCSuperIO</string>
 				<key>MatchKernel</key>
 				<string></string>
 				<key>PlistPath</key>
@@ -481,6 +467,7 @@
 			<string>AppleUiSupport.efi</string>
 			<string>VBoxHfs.efi</string>
 			<string>AptioMemoryFix.efi</string>
+			<string>VirtualSmc.efi</string>
 		</array>
 		<key>Protocols</key>
 		<dict>
