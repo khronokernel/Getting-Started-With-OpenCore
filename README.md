@@ -9,7 +9,7 @@ OpenCore is a replacement for Clover. By design, OpenCore is versatile by being 
 
 * Z97 based systems require pure UEFI mode for booting (also known as Windows 8/10 mode).
 * Currently minimal support for emulated NVRAM (sorry z390 users, EmuVariableRuntimeDxe may work but won't save on reboot).
-* FakeSMC sensors can't be injected, alternative is [HWSensors3](https://github.com/warexify/HWSensors3) or [VirtualSMC sensors](https://github.com/acidanthera/VirtualSMC).
+* ~~FakeSMC sensors can't be injected, alternative is [HWSensors3](https://github.com/warexify/HWSensors3) or [VirtualSMC sensors](https://github.com/acidanthera/VirtualSMC).~~
 * VoodooPS2Controller needs to be injected first, Keyboard second and Mouse/Trackpad third.
 * NVMe issues if setup as a SATA device in BIOS.
 * Sometimes can't access other partitions on the drive, solution is to "bless" the drive with Startup Disk
