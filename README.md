@@ -1,9 +1,9 @@
 # Getting Started With OpenCore
-A brief guide to using the OpenCore bootloader for hackintoshes
+A brief guide to using the OpenCore boot-loader for hackintoshes
 
 # What is OpenCore?
 
-OpenCore is a replacement for Clover. By design, OpenCore is versatile by being more modular and open as it aims to resolve the constraints and issues that Clover brings. It is not only for Hackintoshes as it can be used for other purposes that require an emulated EFI. Please remember we’re still in very early infancy so there will be issues. This specifc guide will be omiting Vault.plist and Vault.sig as there's still quite a bit of development happening there. OpenCore should be considered in Alpha stage at this time. If you have a working, stable system you should not migrate unless you prefer "bleeding edge" development, want to contribute, and don't mind recovering your system should it fail to boot.
+OpenCore is a replacement for Clover. By design, OpenCore is versatile by being more modular and open as it aims to resolve the constraints and issues that Clover brings. It is not only for Hackintoshes as it can be used for other purposes that require an emulated EFI. Please remember we’re still in very early infancy so there will be issues. This specific guide will be omitting Vault.plist and Vault.sig as there's still quite a bit of development happening there. OpenCore should be considered in Alpha stage at this time. If you have a working, stable system you should not migrate unless you prefer "bleeding edge" development, want to contribute, and don't mind recovering your system should it fail to boot.
 
 # Current issues with OpenCore
 
@@ -18,7 +18,7 @@ OpenCore is a replacement for Clover. By design, OpenCore is versatile by being 
 
 Requirements:
 
-* [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases) (Recommend to build from scratch instead of using the prebuilt package as OpenCore is constantly being updated. As of writing we're on Version 0.0.3 even though the current offical release is 0.0.1)
+* [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases) (Recommend to build from scratch instead of using the prebuilt package as OpenCore is constantly being updated. As of writing we're on Version 0.0.3 even though the current official release is 0.0.1)
 * [AppleSupportPkg](https://github.com/acidanthera/AppleSupportPkg/releases)
 * [AptioFixPkg](https://github.com/acidanthera/AptioFixPkg/releases)
 * [mountEFI](https://github.com/corpnewt/MountEFI) or some form of EFI mounting. Clover Configurator works just as well
@@ -100,7 +100,7 @@ We can delete *#WARNING -1* and  *#WARNING -2* just to clean it up a bit.
 
 `PciRoot(0x0)/Pci(0x2,0x0)` -> `AAPL,ig-platform-id`
 
-* Appies Framebuffer patch, insert required value from Framebuffer guide [here](https://www.insanelymac.com/forum/topic/334899-intel-framebuffer-patching-using-whatevergreen/?tab=comments#comment-2626271). Don't forget to add Stolemen and patch-enable.
+* Applies Framebuffer patch, insert required value from Framebuffer guide [here](https://www.insanelymac.com/forum/topic/334899-intel-framebuffer-patching-using-whatevergreen/?tab=comments#comment-2626271). Don't forget to add Stolemen and patch-enable.
 
 `PciRoot(0x0)/Pci(0x1b,0x0)` -> `Layout-id`
 
@@ -125,7 +125,7 @@ We can delete *#WARNING -1* and  *#WARNING -2* just to clean it up a bit.
 * DisbaleIOMapper: NO (Needed to get around VT-D if unable to disable in BIOS, can interfere with Firmware)
 * ExternalDiskIcons: YES (External Icons Patch, for when internal drives are treated as external drives)
 * ThirdPartyTrim: NO (Enables TRIM, not needed for AHCI or NVMe SSDs)
-* XhciPortLimit: YES (This is actually the 15 port limit patch, don't rely on it as it's not a guaranteed solution to USB. Please create a [USB map](https://usb-map.gitbook.io/project/) when possible. It's intended use is for those that do not have a USB map.)
+* XhciPortLimit: YES (This is actually the 15 port limit patch, don't rely on it as it's not a guaranteed solution to USB. Please create a [USB map](https://usb-map.gitbook.io/project/) when possible. Its intended use is for those that do not have a USB map.)
 
 ![Kernel](https://i.imgur.com/TbkQvwb.png)
 
@@ -141,7 +141,7 @@ We can delete *#WARNING -1* and  *#WARNING -2* just to clean it up a bit.
 
 * RequireSignature: NO (We won't be dealing vault.plist so we can ignore)
 * RequireVault: NO (We won't be dealing vault.plist so we can ignore as well)
-* ScanPolicy: 0 (This allow you to see all drives availibe)
+* ScanPolicy: 0 (This allow you to see all drives available)
 
 ![Misc](https://i.imgur.com/Y2AbXMY.png)
 
@@ -190,7 +190,7 @@ We can delete *#WARNING -1* and  *#WARNING -2* just to clean it up a bit.
 **Protocols**:
 
 * AppleBootPolicy: NO (Ensures APFS compatibility on VMs or legacy Macs)
-* ConsoleControl: NO (Replaces Console Control protocol with a builtin version, needed for when firmware doens't support text output mode)
+* ConsoleControl: NO (Replaces Console Control protocol with a builtin version, needed for when firmware doesn’t support text output mode)
 * DataHub: NO (Reinstalls Data Hub)
 * DeviceProperties: NO (Ensures full compatibility on VMs or legacy Macs)
 
@@ -201,8 +201,8 @@ We can delete *#WARNING -1* and  *#WARNING -2* just to clean it up a bit.
 * IgnoreTextInGraphics: NO (Fix for UI corruption when both text and graphics outputs happen)
 * ProvideConsoleGop: NO (Enables GOP, AptioMemeoryFix already has this)
 * ReleaseUsbOwnership: NO (Releases USB controller from firmware driver)
-* RequestBootVarRouting: NO (Redirects AptioMemeoryFix from EFI_GLOBAL_VARIABLE_G to OC_VENDOR_VARIABLE_GUID. Needed for when firmware tries to delete boot entiries)
-* SanitiseClearScreen: NO (Fixes High resoltuions displays that display OpenCore in 1024x768)
+* RequestBootVarRouting: NO (Redirects AptioMemeoryFix from EFI_GLOBAL_VARIABLE_G to OC_VENDOR_VARIABLE_GUID. Needed for when firmware tries to delete boot entries)
+* SanitiseClearScreen: NO (Fixes High resolutions displays that display OpenCore in 1024x768)
 
 ![UEFI](https://i.imgur.com/acZ1PUA.png)
 
@@ -216,13 +216,13 @@ We can delete *#WARNING -1* and  *#WARNING -2* just to clean it up a bit.
 
 # Making Clover your Main Boot-Loader
 
-So now you're ready to completly switch, well what you'll want to do is completely scrub your system of Clover. The main things to keep in mind is:
+So now you're ready to completely switch What you'll want to do is completely scrub your system of Clover. The main things to keep in mind is:
 * Clover is on your Boot Drive (duh)
-* Clover may be hiding in other spots(Clover Prefeance Pane and other tools that rely on Clover)
+* Clover may be hiding in other spots (Clover Preference Pane and other tools that rely on Clover)
 
-Cleaning up is actaully quite simple, for your EFI you'll want to run [mountEFI](https://github.com/corpnewt/MountEFI), move Clover to somewhere safe(preferably a rescue USB) and copy OpenCore's EFI to the main drive's EFI partition. Certain system BIOS may require you to manually remove Clover as an EFI boot option(and extra special system might need a factory reset to permantly remove it)
+Cleaning up is actually quite simple, for your EFI you'll want to run [mountEFI](https://github.com/corpnewt/MountEFI), move Clover to somewhere safe(preferably a rescue USB) and copy OpenCore's EFI to the main drive's EFI partition. Certain system BIOS may require you to manually remove Clover as an EFI boot option (and extra special system might need a factory reset to permanently remove it)
 
-Regarding apps that rely on Clover, you'll need to look through yourself but main culprit is Clover's Preferance Pane which is used for updating Clover(I think you can see why that's an issue). Generally killing and the deleting said app will work in most cases but you may need to do some heavy system file searching to truly delete it if the preferance pane keep showing up
+Regarding apps that rely on Clover, you'll need to look through yourself but main culprit is Clover's Preference Pane which is used for updating Clover (I think you can see why that's an issue). You can find that at: `/Library/PreferencePanes/Clover.prefPane`.
 
 # Credit
 * [Apple](https://www.apple.com) for MacOS
