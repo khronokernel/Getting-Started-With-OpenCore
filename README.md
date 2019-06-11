@@ -154,7 +154,7 @@ We can delete *#WARNING -1* and  *#WARNING -2* just to clean it up a bit.
 **Add**: 7C436110-AB2A-4BBB-A880-FE41995C9F82 (System Integrity Protection bitmask)
 
 * boot-args: -v dart=0 debug=0x100 keepsyms=1 , etc (Boot flags)
-* csr-active-config: <00000000> (Settings for SIP)
+* csr-active-config: <00000000> (Settings for SIP, recommeded to manully change this within Recovery partition with csrutil)
 * nvda_drv:  <> (For enabling WebDrivers)
 * prev-lang:kbd: <> (Needed for non-latin keyboards)
 
