@@ -135,6 +135,8 @@ We can delete *#WARNING -1* and  *#WARNING -2* just to clean it up a bit.
 
 **Boot**: Settings for boot screen (leave as-is unless you know what you're doing).
 * Timeout: 5 (This sets how long OpenCore will wait until it automatically boots from the default selection).
+* ShowPicker: YES (
+* UsePicker: YES (Uses OpenCore's default GUI, set to NO if you wish to use a different GUI)
 
 **Debug**: Debug has special use cases, leave as-is unless you know what you're doing.
 * DisableWatchDog: NO (May need to be set for yes if macOS is stalling on something while booting)
@@ -143,7 +145,7 @@ We can delete *#WARNING -1* and  *#WARNING -2* just to clean it up a bit.
 
 * RequireSignature: NO (We won't be dealing vault.plist so we can ignore)
 * RequireVault: NO (We won't be dealing vault.plist so we can ignore as well)
-* ScanPolicy: 0 (This allow you to see all drives available)
+* ScanPolicy: 0 (This allow you to see all drives available, please refer to OpenCore's DOC for furthur info on setting up ScanPolicy)
 
 ![Misc](https://i.imgur.com/Y2AbXMY.png)
 
@@ -153,7 +155,7 @@ We can delete *#WARNING -1* and  *#WARNING -2* just to clean it up a bit.
 
 * boot-args: -v dart=0 debug=0x100 keepsyms=1 , etc (Boot flags)
 * csr-active-config: <00000000> (Settings for SIP)
-* nvda\_drv:  <> (For enabling WebDrivers)
+* nvda_drv:  <> (For enabling WebDrivers)
 * prev-lang:kbd: <> (Needed for non-latin keyboards)
 
 **Block**: Blocks NVRAM variables, not needed for us. Delete the entires there.
@@ -185,7 +187,7 @@ We can delete *#WARNING -1* and  *#WARNING -2* just to clean it up a bit.
 
 # UEFI
 
-**ConnectDrivers**: YES (Forces .efi drivers, change to NO for faster boot times)
+**ConnectDrivers**: YES (Forces .efi drivers, change to NO for faster boot times but cerain file system drivers may not load)
 
 **Drivers**: Add your .efi drivers here.
 
