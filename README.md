@@ -116,6 +116,8 @@ We can delete *#WARNING -1* and  *#WARNING -2* just to clean it up a bit.
 
 **Add**: Here's where you specify which kexts to load, order matters here so make sure Lilu.kext is always first! Other higher priority kexts come after Lilu such as, VirtualSMC, AppleALC, WhateverGreen, etc.
 
+**Emulate**: Needed for spoofing unsupported CPUs like Pentiums and Celerons
+
 **Block**: Blocks kexts from loading. Sometimes needed for disabling Apple's trackpad driver for some laptops.
 
 **Patch**: Patches kexts (this is where you would add USB port limit patches and AMD CPU patches).
