@@ -1,7 +1,7 @@
 # Getting Started With OpenCore
 A brief guide to using the OpenCore boot-loader for hackintoshes
 
-**Please hold off on following this guide with the latest commimit of OpenCorePkg, numerous changes were made and so this guide requires a clean up**
+**Please hold off on using the prebuilt EFIs with the latest commimit of OpenCorePkg, numerous changes were made and so requires a clean up**
 
 # What is OpenCore?
 
