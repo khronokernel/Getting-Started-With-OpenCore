@@ -92,7 +92,7 @@ We can delete *#WARNING -1* and  *#WARNING -2* just to clean it up a bit.
 * RebaseRegions: NO (Attempt to heuristically relocate ACPI memory regions)
 * ResetLogoStatus: NO (Workaround for systems running BGRT tables)
 
-![ACPI](https://i.imgur.com/IDZZoFc.png)
+![ACPI](https://i.imgur.com/FvV4sgf.png)
 
 &#x200B;
 
@@ -147,7 +147,7 @@ We can delete *#WARNING -1* and  *#WARNING -2* just to clean it up a bit.
 * RequireVault: NO (We won't be dealing vault.plist so we can ignore as well)
 * ScanPolicy: 0 (This allow you to see all drives available, please refer to OpenCore's DOC for furthur info on setting up ScanPolicy)
 
-![Misc](https://i.imgur.com/Y2AbXMY.png)
+![Misc](https://i.imgur.com/XqNqs3X.png)
 
 # NVRAM
 
@@ -160,7 +160,7 @@ We can delete *#WARNING -1* and  *#WARNING -2* just to clean it up a bit.
 
 **Block**: Blocks NVRAM variables, not needed for us. Delete the entires there.
 
-![NVRAM](https://i.imgur.com/F63KIYS.png)
+![NVRAM](https://i.imgur.com/yJVxKz3.png)
 
 # Platforminfo
 
