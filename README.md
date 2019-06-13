@@ -48,13 +48,13 @@ You'll notice that once we open the EFI partition, it's empty. This is where the
 
 To setup OpenCore’s folder structure, you’ll want to grab those files from OpenCorePkg and construct your EFI to look like the one below:
 
-![base EFI folder](https://i.imgur.com/VTd0OYI.png)
+![base EFI folder](https://i.imgur.com/lQ9u54w.png)
 
 Now you can place your necessary .efi drivers from AppleSupportPkg and AptioFixPkg into the *drivers* folder and kexts/ACPI into their respective folders. Please note that UEFI drivers are not supported with OpenCore!
 
 Here's what mine looks like (ignore my odd choice of kexts):
 
-![Populated EFI folder](https://i.imgur.com/ybRtoTi.png)
+![Populated EFI folder](https://i.imgur.com/TLdovCj.png)
 
 # Setting up your config.plist
 
@@ -90,9 +90,10 @@ We can delete *#WARNING -1* and  *#WARNING -2* just to clean it up a bit.
 * ~~IgnoreForWindows: NO (Disable ACPI modifications when booting Windows, only for those who made broken ACPI tables)~~ Removed from OpenCore
 * NormalizeHeaders: NO (Cleanup ACPI header fields, irrelevant in 10.14)
 * RebaseRegions: NO (Attempt to heuristically relocate ACPI memory regions)
+* ResetHwSig
 * ResetLogoStatus: NO (Workaround for systems running BGRT tables)
 
-![ACPI](https://i.imgur.com/FvV4sgf.png)
+![ACPI](https://i.imgur.com/sjlX3aT.png)
 
 &#x200B;
 
@@ -138,7 +139,7 @@ We can delete *#WARNING -1* and  *#WARNING -2* just to clean it up a bit.
 * ThirdPartyTrim: NO (Enables TRIM, not needed for AHCI or NVMe SSDs)
 * XhciPortLimit: YES (This is actually the 15 port limit patch, don't rely on it as it's not a guaranteed solution to USB. Please create a [USB map](https://usb-map.gitbook.io/project/) when possible. Its intended use is for those that do not have a USB map.)
 
-![Kernel](https://i.imgur.com/TbkQvwb.png)
+![Kernel](https://i.imgur.com/DcafUhE.png)
 
 # Misc
 
