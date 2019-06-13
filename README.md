@@ -118,6 +118,9 @@ We can delete *#WARNING -1* and  *#WARNING -2* just to clean it up a bit.
 
 **Emulate**: Needed for spoofing unsupported CPUs like Pentiums and Celerons
 
+* CpuidMask: When set to Zero, original CPU bit will be used
+* CpuidData: The value for the CPU spoofing, don't forget to swap hex
+
 **Block**: Blocks kexts from loading. Sometimes needed for disabling Apple's trackpad driver for some laptops.
 
 **Patch**: Patches kexts (this is where you would add USB port limit patches and AMD CPU patches).
@@ -126,8 +129,12 @@ We can delete *#WARNING -1* and  *#WARNING -2* just to clean it up a bit.
 
 * AppleCpuPmCfgLock: NO (Only needed when CFG-Lock can't be disabled in BIOS)
 * AppleXcpmCfgLock: NO (Only needed when CFG-Lock can't be disabled in BIOS)
+* AppleXcpmExtraMsrs
+* CustomSMBIOSGuid
 * DisbaleIOMapper: NO (Needed to get around VT-D if unable to disable in BIOS, can interfere with Firmware)
 * ExternalDiskIcons: YES (External Icons Patch, for when internal drives are treated as external drives)
+* LapicKernelPanic
+* PanicNoKextDump
 * ThirdPartyTrim: NO (Enables TRIM, not needed for AHCI or NVMe SSDs)
 * XhciPortLimit: YES (This is actually the 15 port limit patch, don't rely on it as it's not a guaranteed solution to USB. Please create a [USB map](https://usb-map.gitbook.io/project/) when possible. Its intended use is for those that do not have a USB map.)
 
@@ -149,6 +156,8 @@ We can delete *#WARNING -1* and  *#WARNING -2* just to clean it up a bit.
 * RequireVault: NO (We won't be dealing vault.plist so we can ignore as well)
 * ScanPolicy: 0 (This allow you to see all drives available, please refer to OpenCore's DOC for furthur info on setting up ScanPolicy)
 
+**Tools** Used for running OC debugging tools like clearing NVRAM
+
 ![Misc](https://i.imgur.com/XqNqs3X.png)
 
 # NVRAM
@@ -161,6 +170,10 @@ We can delete *#WARNING -1* and  *#WARNING -2* just to clean it up a bit.
 * prev-lang:kbd: <> (Needed for non-latin keyboards)
 
 **Block**: Forcibly rewrites NVRAM variables, not needed for us as `sudo NVRAM` is prefered but useful for those edge cases
+
+**LegacyEnable** Allows for NVRAM to be stored on nvram.plist 
+
+**LegacySchema** Used for assigning nvram variable
 
 ![NVRAM](https://i.imgur.com/yJVxKz3.png)
 
