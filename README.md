@@ -160,7 +160,7 @@ We can delete *#WARNING -1* and  *#WARNING -2* just to clean it up a bit.
 * nvda_drv:  <> (For enabling WebDrivers)
 * prev-lang:kbd: <> (Needed for non-latin keyboards)
 
-**Block**: Blocks NVRAM variables, not needed for us. Delete the entires there.
+**Block**: Forcibly rewrites NVRAM variables, not needed for us as `sudo NVRAM` is prefered but useful for those edge cases
 
 ![NVRAM](https://i.imgur.com/yJVxKz3.png)
 
@@ -173,7 +173,7 @@ We can delete *#WARNING -1* and  *#WARNING -2* just to clean it up a bit.
 * SpoofVendor: YES
 * SystemUUID: Can be generated with MacSerial or use pervious from Clover's config.plist.
 * MLB: Can be generated with MacSerial or use pervious from Clover's config.plist.
-* ROM: <> (Automatically filled in)
+* ROM: <> (6 character MAC address, can be entirely random)
 * SystemProductName: Can be generated with MacSerial or use pervious from Clover's config.plist.
 * SystemSerialNumber: Can be generated with MacSerial or use pervious from Clover's config.plist.
 
@@ -203,9 +203,9 @@ We can delete *#WARNING -1* and  *#WARNING -2* just to clean it up a bit.
 **Quirks**:
 
 * ExitBootServicesDelay: 0 (Switch to 5 if running ASUS Z87-Pro with FileVault2)
-* IgnoreInvalidFlexRatio: NO (Fix for when MSR_FLEX_RATIO (0x194) can't be disabled in the BIOS)
+* IgnoreInvalidFlexRatio: NO (Fix for when MSR_FLEX_RATIO (0x194) can't be disabled in the BIOS, required for all pre-skylake based systems)
 * IgnoreTextInGraphics: NO (Fix for UI corruption when both text and graphics outputs happen)
-* ProvideConsoleGop: NO (Enables GOP, AptioMemeoryFix already has this)
+* ProvideConsoleGop: YES (Enables GOP, AptioMemoryFix currently offers this but will soon be removed)
 * ReleaseUsbOwnership: NO (Releases USB controller from firmware driver)
 * RequestBootVarRouting: NO (Redirects AptioMemeoryFix from EFI_GLOBAL_VARIABLE_G to OC_VENDOR_VARIABLE_GUID. Needed for when firmware tries to delete boot entries)
 * SanitiseClearScreen: NO (Fixes High resolutions displays that display OpenCore in 1024x768)
@@ -232,6 +232,6 @@ Regarding apps that rely on Clover, you'll need to look through yourself but mai
 
 # Credit
 * [Apple](https://www.apple.com) for MacOS
-* [vit9696](https://github.com/vit9696) for OpenCore
+* [vit9696](https://github.com/vit9696) for OpenCore and corrections for this guide
 * [InsanelyMac's OpenCore forums](https://www.insanelymac.com/forum/topic/338516-opencore-discussion/) for finding issues with hardware and their work arounds
 * [icedterminal](https://github.com/icedterminal) for heavy grammar correction and Clover Removal
