@@ -90,7 +90,8 @@ We can delete *#WARNING -1* and  *#WARNING -2* just to clean it up a bit.
 * ~~IgnoreForWindows: NO (Disable ACPI modifications when booting Windows, only for those who made broken ACPI tables)~~ Removed from OpenCore
 * NormalizeHeaders: NO (Cleanup ACPI header fields, irrelevant in 10.14)
 * RebaseRegions: NO (Attempt to heuristically relocate ACPI memory regions)
-* ResetHwSig
+* ResetHwSig: NO (Needed for hardware that fail fail to maintain hardware signature across the reboots and cause issues with
+waking from hibernation)
 * ResetLogoStatus: NO (Workaround for systems running BGRT tables)
 
 ![ACPI](https://i.imgur.com/sjlX3aT.png)
@@ -130,12 +131,12 @@ We can delete *#WARNING -1* and  *#WARNING -2* just to clean it up a bit.
 
 * AppleCpuPmCfgLock: NO (Only needed when CFG-Lock can't be disabled in BIOS)
 * AppleXcpmCfgLock: NO (Only needed when CFG-Lock can't be disabled in BIOS)
-* AppleXcpmExtraMsrs
-* CustomSMBIOSGuid
+* AppleXcpmExtraMsrs: NO (Disables multiple MSR access needed for unsupported CPUs)
+* CustomSMBIOSGuid: NO (Performs GUID patching for UpdateSMBIOSMode Custom mode. Usually relevant for Dell laptops)
 * DisbaleIOMapper: NO (Needed to get around VT-D if unable to disable in BIOS, can interfere with Firmware)
 * ExternalDiskIcons: YES (External Icons Patch, for when internal drives are treated as external drives)
-* LapicKernelPanic
-* PanicNoKextDump
+* LapicKernelPanic: NO (Disables kernel panic on AP core lapic interrupt)
+* PanicNoKextDump: YES (Allows for reading kernel panics logs when kernel panics occurs)
 * ThirdPartyTrim: NO (Enables TRIM, not needed for AHCI or NVMe SSDs)
 * XhciPortLimit: YES (This is actually the 15 port limit patch, don't rely on it as it's not a guaranteed solution to USB. Please create a [USB map](https://usb-map.gitbook.io/project/) when possible. Its intended use is for those that do not have a USB map.)
 
@@ -157,9 +158,9 @@ We can delete *#WARNING -1* and  *#WARNING -2* just to clean it up a bit.
 * RequireVault: NO (We won't be dealing vault.plist so we can ignore as well)
 * ScanPolicy: 0 (This allow you to see all drives available, please refer to OpenCore's DOC for furthur info on setting up ScanPolicy)
 
-**Tools** Used for running OC debugging tools like clearing NVRAM
+**Tools** Used for running OC debugging tools like clearing NVRAM, we'll be ignoring this
 
-![Misc](https://i.imgur.com/XqNqs3X.png)
+![Misc]https://i.imgur.com/6NPXq0A.png)
 
 # NVRAM
 
@@ -176,7 +177,7 @@ We can delete *#WARNING -1* and  *#WARNING -2* just to clean it up a bit.
 
 **LegacySchema** Used for assigning nvram variable
 
-![NVRAM](https://i.imgur.com/yJVxKz3.png)
+![NVRAM](https://i.imgur.com/MPFj3TS.png)
 
 # Platforminfo
 
@@ -228,7 +229,7 @@ We can delete *#WARNING -1* and  *#WARNING -2* just to clean it up a bit.
 
 # What your EFI should now look like:
 
-![Finished EFI](https://i.imgur.com/pJlP6C3.png)
+![Finished EFI](https://i.imgur.com/TLdovCj.png)
 
 # And now you're ready to boot!
 
