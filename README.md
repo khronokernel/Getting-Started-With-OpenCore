@@ -1,7 +1,7 @@
 # Getting Started With OpenCore
 A brief guide to using the OpenCore boot-loader for hackintoshes
 
-**Guide is currently being reworked with updated information and images, please read the OpenCorePkg doc for more up to date info**
+**This guide will not always be the most up to date, please keep that in mind when compiling the latest version of OpenCore**
 
 # What is OpenCore?
 
