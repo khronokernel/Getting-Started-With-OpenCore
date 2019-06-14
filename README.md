@@ -171,7 +171,7 @@ waking from hibernation)
 * nvda_drv:  <> (For enabling WebDrivers)
 * prev-lang:kbd: <> (Needed for non-latin keyboards)
 
-**Block**: Forcibly rewrites NVRAM variables, not needed for us as `sudo NVRAM` is prefered but useful for those edge cases
+**Block**: Forcibly rewrites NVRAM variables, not needed for us as `sudo nvram` is prefered but useful for those edge cases
 
 **LegacyEnable** Allows for NVRAM to be stored on nvram.plist 
 
