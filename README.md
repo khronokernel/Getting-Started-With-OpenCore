@@ -191,6 +191,13 @@ waking from hibernation)
 * ROM: <> (6 character MAC address, can be entirely random)
 * SystemProductName: Can be generated with MacSerial or use pervious from Clover's config.plist.
 * SystemSerialNumber: Can be generated with MacSerial or use pervious from Clover's config.plist.
+`ROM must either be Apple ROM (dumped from a real Mac), or your NIC MAC address, or any random MAC address (could be just 6 random bytes)` - Vit9696
+
+**DataHub**
+
+**PlatformNVRAM**
+
+**SMBIOS**
 
 **UpdateDataHub**: YES (Update Data Hub fields)
 
