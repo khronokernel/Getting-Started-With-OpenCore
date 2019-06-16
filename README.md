@@ -108,7 +108,7 @@ waking from hibernation)
 
 `PciRoot(0x0)/Pci(0x1b,0x0)` -> `Layout-id`
 
-* Applies AppleALC audio injection, insert required value from AppleALC documentation [here](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=3&cad=rja&uact=8&ved=2ahUKEwj9t8qklJziAhVPoZ4KHb1sBPIQjBAwAnoECAUQDQ&url=https%3A%2F%2Fgithub.com%2Facidanthera%2FAppleALC%2Fwiki%2FSupported-codecs&usg=AOvVaw3QqKGaYwfJ7OkT3YIOmoPz).
+* Applies AppleALC audio injection, insert required value from AppleALC documentation [here](https://github.com/acidanthera/AppleALC/wiki/Supported-codecs).
 
 **Block**: Removes device properties from map (can delete, irrelevant for most users).
 
