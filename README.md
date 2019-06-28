@@ -160,7 +160,7 @@ waking from hibernation)
 
 **Tools** Used for running OC debugging tools like clearing NVRAM, we'll be ignoring this
 
-![Misc]https://i.imgur.com/6NPXq0A.png)
+![Misc](https://i.imgur.com/6NPXq0A.png)
 
 # NVRAM
 
