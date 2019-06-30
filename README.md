@@ -171,7 +171,7 @@ waking from hibernation)
    * `00000000` - SIP completely enabled
    * `30000000` - Allow unsigned kexts and writing to protected fs locations
    * `E7030000` - SIP completely disabled
-* nvda_drv:  <> (For enabling WebDrivers)
+* nvda_drv:  <> (For enabling Nvidia WebDrivers, set to 31 if running a [Maxwell or Pascal GPU](https://github.com/khronokernel/Catalina-GPU-Buyers-Guide/blob/master/README.md#Unsupported-nVidia-GPUs). This is the same as setting nvda_drv=1 but instead we translate it from [text to hex](https://www.browserling.com/tools/hex-to-text))
 * prev-lang:kbd: <> (Needed for non-latin keyboards)
 
 **Block**: Forcibly rewrites NVRAM variables, not needed for us as `sudo nvram` is prefered but useful for those edge cases
