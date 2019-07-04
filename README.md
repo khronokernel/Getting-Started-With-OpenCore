@@ -88,11 +88,11 @@ We can delete *#WARNING -1* and  *#WARNING -2* just to clean it up a bit.
 
 * FadtEnableReset: NO (Enable reboot and shutdown on legacy hardware, not recommended unless needed)
 * ~~IgnoreForWindows: NO (Disable ACPI modifications when booting Windows, only for those who made broken ACPI tables)~~ Removed from OpenCore
-* NormalizeHeaders: NO (Cleanup ACPI header fields, irrelevant in 10.14)
-* RebaseRegions: NO (Attempt to heuristically relocate ACPI memory regions)
-* ResetHwSig: NO (Needed for hardware that fail fail to maintain hardware signature across the reboots and cause issues with
-waking from hibernation)
-* ResetLogoStatus: NO (Workaround for systems running BGRT tables)
+* NormalizeHeaders: Cleanup ACPI header fields, irrelevant in 10.14
+* RebaseRegions: Attempt to heuristically relocate ACPI memory regions
+* ResetHwSig: Needed for hardware that fail fail to maintain hardware signature across the reboots and cause issues with
+waking from hibernation
+* ResetLogoStatus: Workaround for systems running BGRT tables
 
 ![ACPI](https://i.imgur.com/sjlX3aT.png)
 
@@ -129,34 +129,34 @@ waking from hibernation)
 
 **Quirks**:
 
-* AppleCpuPmCfgLock: NO (Only needed when CFG-Lock can't be disabled in BIOS)
-* AppleXcpmCfgLock: NO (Only needed when CFG-Lock can't be disabled in BIOS)
-* AppleXcpmExtraMsrs: NO (Disables multiple MSR access needed for unsupported CPUs)
-* CustomSMBIOSGuid: NO (Performs GUID patching for UpdateSMBIOSMode Custom mode. Usually relevant for Dell laptops)
-* DisbaleIOMapper: NO (Needed to get around VT-D if unable to disable in BIOS, can interfere with Firmware)
-* ExternalDiskIcons: YES (External Icons Patch, for when internal drives are treated as external drives)
-* LapicKernelPanic: NO (Disables kernel panic on AP core lapic interrupt)
-* PanicNoKextDump: YES (Allows for reading kernel panics logs when kernel panics occurs)
-* ThirdPartyTrim: NO (Enables TRIM, not needed for AHCI or NVMe SSDs)
-* XhciPortLimit: YES (This is actually the 15 port limit patch, don't rely on it as it's not a guaranteed solution to USB. Please create a [USB map](https://usb-map.gitbook.io/project/) when possible. Its intended use is for those that do not have a USB map.)
+* AppleCpuPmCfgLock: Only needed when CFG-Lock can't be disabled in BIOS
+* AppleXcpmCfgLock: Only needed when CFG-Lock can't be disabled in BIOS
+* AppleXcpmExtraMsrs: Disables multiple MSR access needed for unsupported CPUs
+* CustomSMBIOSGuid: Performs GUID patching for UpdateSMBIOSMode Custom mode. Usually relevant for Dell laptops
+* DisbaleIOMapper: Needed to get around VT-D if unable to disable in BIOS, can interfere with Firmware
+* ExternalDiskIcons: External Icons Patch, for when internal drives are treated as external drives
+* LapicKernelPanic: Disables kernel panic on AP core lapic interrupt
+* PanicNoKextDump: Allows for reading kernel panics logs when kernel panics occurs
+* ThirdPartyTrim: Enables TRIM, not needed for AHCI or NVMe SSDs
+* XhciPortLimit: This is actually the 15 port limit patch, don't rely on it as it's not a guaranteed solution to USB. Please create a [USB map](https://usb-map.gitbook.io/project/) when possible. Its intended use is for those that do not have a USB map.
 
 ![Kernel](https://i.imgur.com/DcafUhE.png)
 
 # Misc
 
 **Boot**: Settings for boot screen (leave as-is unless you know what you're doing).
-* Timeout: 5 (This sets how long OpenCore will wait until it automatically boots from the default selection).
-* ShowPicker: YES (
-* UsePicker: YES (Uses OpenCore's default GUI, set to NO if you wish to use a different GUI)
+* Timeout: This sets how long OpenCore will wait until it automatically boots from the default selection
+* ShowPicker: 
+* UsePicker: Uses OpenCore's default GUI, set to NO if you wish to use a different GUI
 
 **Debug**: Debug has special use cases, leave as-is unless you know what you're doing.
-* DisableWatchDog: NO (May need to be set for yes if macOS is stalling on something while booting)
+* DisableWatchDog: (May need to be set for yes if macOS is stalling on something while booting
 
 **Security**: Security is pretty self-explanatory.
 
-* RequireSignature: NO (We won't be dealing vault.plist so we can ignore)
-* RequireVault: NO (We won't be dealing vault.plist so we can ignore as well)
-* ScanPolicy: 0 (This allow you to see all drives available, please refer to OpenCore's DOC for furthur info on setting up ScanPolicy)
+* RequireSignature: We won't be dealing vault.plist so we can ignore
+* RequireVault: We won't be dealing vault.plist so we can ignore as well
+* ScanPolicy: This allow you to see all drives available, please refer to OpenCore's DOC for furthur info on setting up ScanPolicy
 
 **Tools** Used for running OC debugging tools like clearing NVRAM, we'll be ignoring this
 
@@ -220,20 +220,20 @@ waking from hibernation)
 
 **Protocols**:
 
-* AppleBootPolicy: NO (Ensures APFS compatibility on VMs or legacy Macs)
-* ConsoleControl: NO (Replaces Console Control protocol with a builtin version, needed for when firmware doesn’t support text output mode)
-* DataHub: NO (Reinstalls Data Hub)
-* DeviceProperties: NO (Ensures full compatibility on VMs or legacy Macs)
+* AppleBootPolicy: (Ensures APFS compatibility on VMs or legacy Macs)
+* ConsoleControl: (Replaces Console Control protocol with a builtin version, needed for when firmware doesn’t support text output mode)
+* DataHub: (Reinstalls Data Hub)
+* DeviceProperties: (Ensures full compatibility on VMs or legacy Macs)
 
 **Quirks**:
 
 * ExitBootServicesDelay: 0 (Switch to 5 if running ASUS Z87-Pro with FileVault2)
-* IgnoreInvalidFlexRatio: NO (Fix for when MSR_FLEX_RATIO (0x194) can't be disabled in the BIOS, required for all pre-skylake based systems)
-* IgnoreTextInGraphics: NO (Fix for UI corruption when both text and graphics outputs happen)
-* ProvideConsoleGop: YES (Enables GOP, AptioMemoryFix currently offers this but will soon be removed)
-* ReleaseUsbOwnership: NO (Releases USB controller from firmware driver)
-* RequestBootVarRouting: NO (Redirects AptioMemeoryFix from EFI_GLOBAL_VARIABLE_G to OC_VENDOR_VARIABLE_GUID. Needed for when firmware tries to delete boot entries)
-* SanitiseClearScreen: NO (Fixes High resolutions displays that display OpenCore in 1024x768)
+* IgnoreInvalidFlexRatio: (Fix for when MSR_FLEX_RATIO (0x194) can't be disabled in the BIOS, required for all pre-skylake based systems)
+* IgnoreTextInGraphics: (Fix for UI corruption when both text and graphics outputs happen)
+* ProvideConsoleGop: (Enables GOP, AptioMemoryFix currently offers this but will soon be removed)
+* ReleaseUsbOwnership: (Releases USB controller from firmware driver)
+* RequestBootVarRouting: (Redirects AptioMemeoryFix from EFI_GLOBAL_VARIABLE_G to OC_VENDOR_VARIABLE_GUID. Needed for when firmware tries to delete boot entries)
+* SanitiseClearScreen: (Fixes High resolutions displays that display OpenCore in 1024x768)
 
 ![UEFI](https://i.imgur.com/acZ1PUA.png)
 
