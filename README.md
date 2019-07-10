@@ -1,7 +1,7 @@
 # Getting Started With OpenCore
 A brief guide to using the OpenCore boot-loader for hackintoshes
 
-**This guide has now been deprecated, for those who wish to follow a more up to date guide can follow the [OpenCore Vanilla Desktop Guide](https://khronokernel-2.gitbook.io/opencore-vanilla-desktop-guide/). Seriously thank you all for checking out this guide, over 1500 users have vistited this guide and to think that even a fraction of that would find this guide useful**
+**This guide has now been deprecated, for those who wish to follow a more up to date guide can follow the [OpenCore Vanilla Desktop Guide](https://khronokernel-2.gitbook.io/opencore-vanilla-desktop-guide/). Seriously thank you all for checking out this guide, over 1500 users have vistited this guide and to think that even a fraction of that could find this guide useful**
 
 # What is OpenCore?
 
