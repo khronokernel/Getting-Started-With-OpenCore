@@ -245,7 +245,7 @@ waking from hibernation
 
 ![AboutThisMac](https://i.imgur.com/MFq1qGr.png)
 
-# Making Clover your Main Boot-Loader
+# Making OpenCore your Main Boot-Loader
 
 So now you're ready to completely switch What you'll want to do is completely scrub your system of Clover. The main things to keep in mind is:
 * Clover is on your Boot Drive (duh)
